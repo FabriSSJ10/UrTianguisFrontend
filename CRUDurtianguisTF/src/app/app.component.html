@@ -1,0 +1,47 @@
+<mat-toolbar class="custom-toolbar">
+  <mat-icon>menu</mat-icon>
+  <div>
+    <!-- Menú para Departamento -->
+    <button mat-button [matMenuTriggerFor]="menuDepartamento" style="color: rgb(255, 255, 255);">Departamento</button>
+    <!-- Menú para Notificación -->
+    <button mat-button [matMenuTriggerFor]="menuNotificacion" style="color: rgb(255, 255, 255);">Notificación</button>
+    <!-- Menú para Tipo de Ocasión -->
+    <button mat-button [matMenuTriggerFor]="menuTipoOcasion" style="color: rgb(255, 255, 255);">Tipo de Ocasión</button>
+    <!-- Menú para Tipo de Pago -->
+    <button mat-button [matMenuTriggerFor]="menuTipoPago" style="color: rgb(255, 255, 255);">Tipo de Pago</button>
+    <!-- Menú para Tipo de Prenda -->
+    <button mat-button [matMenuTriggerFor]="menuTipoPrenda" style="color: rgb(255, 255, 255);">Tipo de Prenda</button>
+  </div>
+</mat-toolbar>
+
+<!-- Menú desplegable para Tipo de Ocasión -->
+<mat-menu #menuDepartamento="matMenu">
+  <button mat-menu-item routerLink="/departamentos">Listar</button>
+  <button mat-menu-item routerLink="/departamentos/nuevo">Registrar</button>
+</mat-menu>
+
+<!-- Menú desplegable para Notificación -->
+<mat-menu #menuNotificacion="matMenu">
+  <button mat-menu-item routerLink="/notificaciones">Listar</button>
+  <button mat-menu-item routerLink="/notificaciones/nuevo">Registrar</button>
+</mat-menu>
+
+<!-- Menú desplegable para Tipo de Ocasión -->
+<mat-menu #menuTipoOcasion="matMenu">
+  <button mat-menu-item routerLink="/tiposocasion">Listar</button>
+  <button mat-menu-item routerLink="/tiposocasion/nuevo">Registrar</button>
+</mat-menu>
+
+<!-- Menú desplegable para Tipo de Pago -->
+<mat-menu #menuTipoPago="matMenu">
+  <button mat-menu-item routerLink="/tipospago">Listar</button>
+  <button mat-menu-item routerLink="/tipospago/nuevo">Registrar</button>
+</mat-menu>
+
+<!-- Menú desplegable para Tipo de Prenda -->
+<mat-menu #menuTipoPrenda="matMenu">
+  <button mat-menu-item routerLink="/tiposprenda">Listar</button>
+  <button mat-menu-item routerLink="/tiposprenda/nuevo">Registrar</button>
+</mat-menu>
+
+<router-outlet></router-outlet>
