@@ -1,0 +1,14 @@
+<mat-toolbar class="custom-toolbar">
+  <mat-icon>menu</mat-icon>
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuSI63" style="color: white">
+      TipoPago
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-menu #menuSI63="matMenu">
+  <button mat-menu-item routerLink="/tipopagos">Listar</button>
+  <button mat-menu-item routerLink="/tipopagos/nuevo">Registrar</button>
+</mat-menu>
+<router-outlet></router-outlet>
