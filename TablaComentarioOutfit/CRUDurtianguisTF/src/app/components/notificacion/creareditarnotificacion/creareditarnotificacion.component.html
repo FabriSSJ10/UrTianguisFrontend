@@ -1,0 +1,32 @@
+<div class="container" style="text-align: center;margin:2%">
+    <div><h1>Registrar Notificaciones</h1></div>
+    <div>
+      <form [formGroup]="form" (submit)=" insertar()">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>Codigo</mat-label>
+          <input matInput formControlName="hcodigo" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>¿Pedido confirmado?</mat-label>
+          <mat-select formControlName="hconfirmarpedido" >
+            @for (m of listaConfirmarPedido; track m) {
+            <mat-option [value]="m.value">{{ m.viewValue }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>¿Envío entregado?</mat-label>
+          <mat-select formControlName="hconfirmarentrega">
+            @for (c of listaConfirmarEntrega; track c) {
+            <mat-option [value]="c.value">{{ c.viewValue }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-flat-button class="custom-button">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
