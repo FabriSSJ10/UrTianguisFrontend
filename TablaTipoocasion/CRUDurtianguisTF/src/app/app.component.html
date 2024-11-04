@@ -1,0 +1,14 @@
+<mat-toolbar class="custom-toolbar">
+  <mat-icon>menu</mat-icon>
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuSI63" style="color: white">
+      Tipo Ocasion
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-menu #menuSI63="matMenu">
+  <button mat-menu-item routerLink="/tipos_ocasion">Listar</button>
+  <button mat-menu-item routerLink="/tipos_ocasion/nuevo">Registrar</button>
+</mat-menu>
+<router-outlet></router-outlet>
