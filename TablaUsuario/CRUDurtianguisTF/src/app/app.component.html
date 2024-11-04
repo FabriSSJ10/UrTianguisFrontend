@@ -1,0 +1,55 @@
+<mat-toolbar class="custom-toolbar">
+  <mat-icon>menu</mat-icon>
+  <div>
+    <!-- Menú para Departamento -->
+    <button mat-button [matMenuTriggerFor]="menuDepartamento" style="color: rgb(255, 255, 255);">Departamento</button>
+    <!-- Menú para Notificación -->
+    <button mat-button [matMenuTriggerFor]="menuNotificacion" style="color: rgb(255, 255, 255);">Notificación</button>
+    <!-- Menú para Tipo de Ocasión -->
+    <button mat-button [matMenuTriggerFor]="menuTipoOcasion" style="color: rgb(255, 255, 255);">Tipo de Ocasión</button>
+    <!-- Menú para Tipo de Pago -->
+    <button mat-button [matMenuTriggerFor]="menuTipoPago" style="color: rgb(255, 255, 255);">Tipo de Pago</button>
+    <!-- Menú para Tipo de Prenda -->
+    <button mat-button [matMenuTriggerFor]="menuTipoPrenda" style="color: rgb(255, 255, 255);">Tipo de Prenda</button>
+    <!-- Menú para Tipo de Usuario -->
+    <button mat-button [matMenuTriggerFor]="menuUsuario" style="color: rgb(255, 255, 255);">Usuario</button>
+  </div>
+</mat-toolbar>
+
+<!-- Menú desplegable para Tipo de Ocasión -->
+<mat-menu #menuDepartamento="matMenu">
+  <button mat-menu-item routerLink="/departamentos">Listar</button>
+  <button mat-menu-item routerLink="/departamentos/nuevo">Registrar</button>
+</mat-menu>
+
+<!-- Menú desplegable para Notificación -->
+<mat-menu #menuNotificacion="matMenu">
+  <button mat-menu-item routerLink="/notificaciones">Listar</button>
+  <button mat-menu-item routerLink="/notificaciones/nuevo">Registrar</button>
+</mat-menu>
+
+<!-- Menú desplegable para Tipo de Ocasión -->
+<mat-menu #menuTipoOcasion="matMenu">
+  <button mat-menu-item routerLink="/tipos_ocasion">Listar</button>
+  <button mat-menu-item routerLink="/tipos_ocasion/nuevo">Registrar</button>
+</mat-menu>
+
+<!-- Menú desplegable para Tipo de Pago -->
+<mat-menu #menuTipoPago="matMenu">
+  <button mat-menu-item routerLink="/tipopagos">Listar</button>
+  <button mat-menu-item routerLink="/tipopagos/nuevo">Registrar</button>
+</mat-menu>
+
+<!-- Menú desplegable para Tipo de Prenda -->
+<mat-menu #menuTipoPrenda="matMenu">
+  <button mat-menu-item routerLink="/tipos_prenda">Listar</button>
+  <button mat-menu-item routerLink="/tipos_prenda/nuevo">Registrar</button>
+</mat-menu>
+
+<!-- Menú desplegable para Usuarios -->
+<mat-menu #menuUsuario="matMenu">
+  <button mat-menu-item routerLink="/usuarios">Listar</button>
+  <button mat-menu-item routerLink="/usuarios/nuevo">Registrar</button>
+</mat-menu>
+
+<router-outlet></router-outlet>
