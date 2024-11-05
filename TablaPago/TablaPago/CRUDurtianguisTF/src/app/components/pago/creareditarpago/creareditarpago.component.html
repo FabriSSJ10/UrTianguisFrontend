@@ -1,0 +1,57 @@
+<div class="container" style="text-align: center; margin: 2%">
+    <div><h1>Registro de Pagos</h1></div>
+  
+    <div>
+      <form [formGroup]="form" (submit)="insertar()">
+        <mat-form-field class="example-full-width">
+            <mat-label>Monto</mat-label>
+            <input matInput formControlName="hmonto" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+            <mat-label>Fecha de Pago</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="hfechapago" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Número de Tarjeta</mat-label>
+            <input matInput formControlName="hnumtarjeta" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Fecha de Vencimiento</mat-label>
+            <input matInput formControlName="hfechavencimiento" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Código de Validación</mat-label>
+            <input matInput formControlName="hcodvalidacion" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Celular</mat-label>
+            <input matInput formControlName="htelefono" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Tipo de Pago</mat-label>
+          <mat-select formControlName="htipopago">
+            @for (pr of listaTipoPagos; track pr) {
+            <mat-option [value]="pr.id_tipo_pago">{{ pr.tipo_pago }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <div>
+          <button mat-flat-button class="custom-button">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

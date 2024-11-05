@@ -1,0 +1,92 @@
+<div class="container" style="text-align: center; margin: 2%">
+    <div><h1>Registro de Prendas</h1></div>
+  
+    <div>
+      <form [formGroup]="form" (submit)="insertar()">
+        <mat-form-field class="example-full-width">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="hnombre" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Descripción</mat-label>
+            <input matInput formControlName="hdescripcion" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Precio</mat-label>
+            <input matInput formControlName="hprecio" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Talla</mat-label>
+            <input matInput formControlName="htalla" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Stock</mat-label>
+            <input matInput formControlName="hstock" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label># de Uso</mat-label>
+            <input matInput formControlName="hvecesusada" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+            <mat-label>Fecha de Creación</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="hfechacreacion" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        <br />
+        <mat-form-field>
+            <mat-label>Fecha de Modificación</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="hfechamodificacion" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Creado por</mat-label>
+            <input matInput formControlName="hcreadopor" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Modificado por</mat-label>
+            <input matInput formControlName="hmodificadopor" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Tipo de Prenda</mat-label>
+          <mat-select formControlName="htipoprenda">
+            @for (tp of listaTipoPrendas; track tp) {
+            <mat-option [value]="tp.id_tipo_prenda">{{ tp.tipo_prenda }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+            <mat-label>Tienda</mat-label>
+            <mat-select formControlName="htienda">
+              @for (ti of listaTiendas; track ti) {
+              <mat-option [value]="ti.id_tienda">{{ ti.nombre }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <br />
+        <div>
+          <button mat-flat-button class="custom-button">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

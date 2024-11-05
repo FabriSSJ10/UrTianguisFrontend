@@ -1,0 +1,88 @@
+<div class="container">
+    <div style="text-align: center;margin: 10%;"><h1>Lista de Prendas</h1></div>
+    <div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="c1">
+          <th mat-header-cell *matHeaderCellDef>Código</th>
+          <td mat-cell *matCellDef="let element">{{ element.id_prenda }}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="c2">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="c3">
+            <th mat-header-cell *matHeaderCellDef>Descripción</th>
+            <td mat-cell *matCellDef="let element">{{ element.descripcion }}</td>
+          </ng-container>
+
+        <ng-container matColumnDef="c4">
+            <th mat-header-cell *matHeaderCellDef>Precio</th>
+            <td mat-cell *matCellDef="let element">{{ element.precio }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="c5">
+            <th mat-header-cell *matHeaderCellDef>Talla</th>
+            <td mat-cell *matCellDef="let element">{{ element.talla }}</td>
+          </ng-container>
+
+        <ng-container matColumnDef="c6">
+            <th mat-header-cell *matHeaderCellDef>Stock</th>
+            <td mat-cell *matCellDef="let element">{{ element.stock }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="c7">
+            <th mat-header-cell *matHeaderCellDef># de Uso</th>
+            <td mat-cell *matCellDef="let element">{{ element.veces_usada }}</td>
+          </ng-container>
+
+        <ng-container matColumnDef="c8">
+            <th mat-header-cell *matHeaderCellDef>Fecha de Creación</th>
+            <td mat-cell *matCellDef="let element">{{ element.i_fecha_creacion }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="c9">
+            <th mat-header-cell *matHeaderCellDef>Fecha de Modificación</th>
+            <td mat-cell *matCellDef="let element">{{ element.i_fecha_modificacion }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="c10">
+            <th mat-header-cell *matHeaderCellDef>Creado por</th>
+            <td mat-cell *matCellDef="let element">{{ element.i_creado_por }}</td>
+          </ng-container>
+
+        <ng-container matColumnDef="c11">
+            <th mat-header-cell *matHeaderCellDef>Modificado por</th>
+            <td mat-cell *matCellDef="let element">{{ element.i_modificado_por }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="c12">
+            <th mat-header-cell *matHeaderCellDef>Tipo de Prenda</th>
+            <td mat-cell *matCellDef="let element">{{ element.tp.tipo_prenda }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="c13">
+            <th mat-header-cell *matHeaderCellDef>Tienda</th>
+            <td mat-cell *matCellDef="let element">{{ element.ti.nombre }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="accion01">
+            <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+            <td mat-cell *matCellDef="let element" (click)="eliminar(element.id_pedido)">
+              <mat-icon style="color:#405A44">delete</mat-icon></td>
+          </ng-container>
+    
+          <ng-container matColumnDef="accion02">
+            <th mat-header-cell *matHeaderCellDef>Editar</th>
+            <td mat-cell *matCellDef="let element" [routerLink]="['ediciones', element.id_pedido]">
+              <mat-icon style="color:#405A44">edit</mat-icon></td>
+          </ng-container>
+    
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
