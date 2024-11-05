@@ -1,0 +1,83 @@
+<div class="container" style="text-align: center; margin: 2%">
+    <div><h1>Registro de OutFit</h1></div>
+    <div>
+      <form [formGroup]="form" (submit)="insertar()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Juan" formControlName="hnombre" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Descripcion</mat-label>
+          <input matInput placeholder="Torres" formControlName="hdescripcion" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Calificacion</mat-label>
+          <input matInput placeholder="1-5" formControlName="hcalificacion" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Imagen</mat-label>
+          <input matInput formControlName="himagen" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+            <mat-label>Fecha Creacion</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="hi_fecha_creacion" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker1" ></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+        <br />
+        <mat-form-field>
+            <mat-label>Fecha modificacion</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="hi_fecha_modificacion" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker2" ></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Creado Por:</mat-label>
+            <input matInput formControlName="hi_creador_por" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Modificado Por:</mat-label>
+            <input matInput formControlName="hi_modificado_por" />
+          </mat-form-field>
+        <br />
+        <mat-form-field>
+            <mat-label>Usuario</mat-label>
+            <mat-select formControlName="hus" >
+              @for (m of listaUsuario; track m) {
+              <mat-option [value]="m.id_usuario">{{ m.nombre }}</mat-option>
+              }
+            </mat-select>
+        </mat-form-field>
+      <br />
+        <mat-form-field>
+            <mat-label>Prenda</mat-label>
+            <mat-select formControlName="hpr" >
+              @for (m of listaPrenda; track m) {
+              <mat-option [value]="m.id_prenda">{{ m.nombre }}</mat-option>
+              }
+            </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+            <mat-label>Tipo Ocasion</mat-label>
+            <mat-select formControlName="hto" >
+              @for (m of listaTocacion; track m) {
+              <mat-option [value]="m.id_tipo_ocasion">{{ m.tipo_ocasion }}</mat-option>
+              }
+            </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-flat-button class="custom-button">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

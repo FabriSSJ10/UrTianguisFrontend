@@ -1,0 +1,41 @@
+<div class="container" style="text-align: center; margin: 2%">
+    <div><h1>Registro de Tiendas</h1></div>
+    <div>
+      <form [formGroup]="form" (submit)="insertar()">
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="hnombre" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Altitud</mat-label>
+          <input matInput formControlName="haltitud" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Latitud</mat-label>
+          <input matInput formControlName="hlatitud" />
+        </mat-form-field>
+
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Logo</mat-label>
+          <input matInput formControlName="hlogo" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="hus" >
+            @for (m of listaUsuarios; track m) {
+            <mat-option [value]="m.id_usuario">{{ m.nombre }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <div>
+          <button mat-flat-button class="custom-button">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
