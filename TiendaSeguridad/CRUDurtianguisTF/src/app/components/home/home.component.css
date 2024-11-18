@@ -1,0 +1,196 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 880px;
+  scroll-behavior: smooth;
+  background-color: #f2edde; /* Fondo suave */
+  color: #3c4640; /* Texto general */
+}
+
+/* Barra de navegación */
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: #405a44; /* Verde oscuro */
+  padding: 1em;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  margin: 0 15px;
+}
+
+.navbar a {
+  color: #f2edde; /* Blanco crema */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  color: #90b7a1; /* Verde claro */
+}
+
+/* Landing */
+.landing-container {
+  text-align: center;
+  padding: 2em;
+  background-color: #b3a284; /* Beige oscuro */
+}
+
+header h1 {
+  font-size: 2.5em;
+  color: #3c4640; /* Texto verde oscuro */
+  font-weight: bold; /* Negrita */
+}
+
+header p {
+  font-size: 1.3em;
+  color: #405a44; /* Verde intermedio */
+  line-height: 1.6; /* Mayor legibilidad */
+}
+
+/* Botón de llamada a la acción */
+.cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #405a44; /* Verde oscuro */
+  color: #f2edde; /* Blanco crema */
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.cta-button:hover {
+  background-color: #90b7a1; /* Verde claro */
+}
+
+/* Slider */
+.slider-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  padding: 20px;
+}
+
+.slider-item img {
+  width: 400px;
+  height: 300px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.slider-item img:hover {
+  transform: scale(1.1);
+}
+
+/* Secciones */
+section {
+  padding: 3em 1em;
+  text-align: center;
+}
+
+section h2 {
+  font-size: 2rem;
+  color: #405a44; /* Verde oscuro */
+  font-weight: bold; /* Negrita */
+}
+
+section p {
+  font-size: 1.2em;
+  color: #3c4640; /* Texto verde oscuro */
+  line-height: 1.8; /* Espaciado entre líneas */
+  margin: 0.5em auto;
+  max-width: 800px;
+  text-align: justify;
+}
+
+/* Footer */
+footer {
+  background-color: #405a44; /* Verde oscuro */
+  color: #f2edde; /* Blanco crema */
+  text-align: center;
+  padding: 1em 0;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1em 0;
+}
+
+footer li {
+  display: inline;
+  margin: 0 10px;
+}
+
+footer a {
+  color: #90b7a1; /* Verde claro */
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #f2edde; /* Blanco crema */
+}
+
+/* Estilos para la sección de Equipo */
+#equipo {
+  padding: 2rem;
+  background-color: #f2edde; /* Fondo suave */
+  text-align: center;
+}
+
+#equipo h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #405a44; /* Verde oscuro */
+  font-weight: bold; /* Negrita */
+}
+
+.team-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.team-member {
+  background: #fff;
+  border: 1px solid #b3a284; /* Beige oscuro */
+  border-radius: 8px;
+  padding: 1rem;
+  max-width: 250px;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.team-member img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.team-member h3 {
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+  color: #405a44; /* Verde oscuro */
+  font-weight: bold; /* Negrita */
+}
+
+.team-member p {
+  font-size: 1rem;
+  color: #3c4640; /* Texto verde oscuro */
+  line-height: 1.5; /* Mayor legibilidad */
+}
