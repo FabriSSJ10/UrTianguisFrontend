@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="background-image"></div>
+  <div class="content">
+    <h2>Inicie sesión</h2>
+    <mat-form-field class="example-full-width">
+      <mat-label>Usuario</mat-label>
+      <input matInput placeholder="Username" [(ngModel)]="username" />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="example-full-width">
+      <mat-label>Contraseña</mat-label>
+      <input type="password" matInput placeholder="Password" [(ngModel)]="password" />
+    </mat-form-field>
+    <br />
+    <button mat-raised-button class="custom-button" (click)="login()">Ingresar</button>
+  </div>
+</div>

@@ -1,0 +1,109 @@
+/* Estilos generales */
+.container {
+  margin: 10%;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #405a44;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Contenedor de las tarjetas */
+.cards-container {
+  display: grid; /* Configuración de CSS Grid */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Tarjetas responsivas */
+  gap: 10px; /* Reduce el espacio entre las tarjetas */
+  background-color: #bfbfbf; /* Fondo claro */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+
+
+
+/* Estilo de cada tarjeta */
+.notification-card mat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 250px; /* Ancho máximo */
+  padding: 20px;
+  border-radius: 8px; /* Bordes redondeados */
+  background-color: #f2edde; /* Fondo claro */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación */
+}
+
+.notification-card mat-card:hover {
+  transform: translateY(-5px); /* Efecto de desplazamiento */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Sombra al pasar el mouse */
+}
+
+/* Encabezado de las tarjetas */
+mat-card-header {
+  background-color: transparent; /* Sin fondo */
+  padding: 0;
+  margin-bottom: 10px;
+  text-align: left; /* Alinear texto */
+}
+
+/* Estilo del título */
+mat-card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #405a44;
+  margin-bottom: 10px;
+}
+
+/* Contenido del subtítulo */
+mat-card-subtitle {
+  font-size: 0.9rem;
+  color: #3c4640;
+}
+
+/* Acciones en las tarjetas */
+mat-card-actions {
+  display: flex;
+  justify-content: space-around; /* Botones separados */
+  gap: 10px; /* Espaciado entre botones */
+}
+
+mat-card-actions button {
+  font-size: 0.9rem;
+  background-color: #90b7a1; /* Fondo verde */
+  color: white;
+  border: none;
+  border-radius: 4px; /* Bordes redondeados */
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+mat-card-actions button:hover {
+  background-color: #405a44; /* Fondo más oscuro */
+}
+
+mat-card-actions mat-icon {
+  font-size: 1.3rem;
+  color: #90b7a1;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+mat-card-actions mat-icon:hover {
+  color: #b3a284; /* Cambio de color en hover */
+}
+.cards-container {
+  background-color: #bfbfbf; /* Color de fondo del cuadro */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 20px; /* Espaciado interno */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para el cuadro */
+  margin-top: 20px; /* Espacio superior */
+}

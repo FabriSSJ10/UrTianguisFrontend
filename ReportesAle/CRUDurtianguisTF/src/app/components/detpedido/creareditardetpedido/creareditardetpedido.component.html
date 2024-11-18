@@ -1,0 +1,50 @@
+<div class="container" style="text-align: center; margin: 2%">
+    <div><h1>Registro de Detalles de Pedido</h1></div>
+  
+    <div>
+      <form [formGroup]="form" (submit)="insertar()">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>Código</mat-label>
+          <input matInput formControlName="hid" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Cantidad</mat-label>
+          <input matInput formControlName="hcantidad" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Precio Total</mat-label>
+            <input matInput formControlName="hprecio_total" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Sub Total</mat-label>
+            <input matInput formControlName="hsub_total" />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Prenda</mat-label>
+          <mat-select formControlName="hpr">
+            @for (pr of listaPrendas; track pr) {
+            <mat-option [value]="pr.id_prenda">{{ pr.nombre }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+            <mat-label>Pedido</mat-label>
+            <mat-select formControlName="hpe">
+              @for (pe of listaPedidos; track pe) {
+              <mat-option [value]="pe.id_pedido">{{ pe.id_pedido }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        <br />
+        <div>
+          <button mat-flat-button class="custom-button">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

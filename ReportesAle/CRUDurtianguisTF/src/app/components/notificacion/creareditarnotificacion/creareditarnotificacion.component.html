@@ -1,0 +1,20 @@
+<div class="container" style="text-align: center;margin:2%">
+    <div><h1>Registrar Notificaciones</h1></div>
+    <div>
+      <form [formGroup]="form" (submit)=" insertar()">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>Codigo</mat-label>
+          <input matInput formControlName="hcodigo" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Descripcion</mat-label>
+          <input matInput formControlName="hdescripcion" />
+      </mat-form-field>
+        <br />
+        <div>
+          <button mat-flat-button class="custom-button">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
