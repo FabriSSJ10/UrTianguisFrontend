@@ -1,0 +1,25 @@
+<div class="container" style="text-align: center;margin:2%">
+    <div><h1>Registro de Roles</h1></div>
+    <div>
+      <form [formGroup]="form" (submit)="insertar()">
+        <br />
+        <mat-form-field class="example-full-width" >
+          <mat-label>Rol</mat-label>
+          <input matInput formControlName="hrol" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="hus" >
+            @for (m of listaUsuario; track m) {
+            <mat-option [value]="m.id_usuario">{{ m.nombre }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+  
+        <div>
+          <button mat-flat-button class="custom-button">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
