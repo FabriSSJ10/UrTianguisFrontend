@@ -1,0 +1,178 @@
+<mat-toolbar class="custom-toolbar" *ngIf="verificar()">
+  <div class="left-menu">
+    <button mat-button [matMenuTriggerFor]="menuPrincipal" style="color: white">
+      <mat-icon>menu</mat-icon>Menú
+    </button>
+  </div>
+  <div>
+    <button mat-button [routerLink]="['/homes']" style="color: white">
+      <mat-icon>home</mat-icon>Home
+    </button>
+  </div>
+  <div class="right-menu">
+    <button mat-button [matMenuTriggerFor]="menuSalir" style="color: white">
+      <mat-icon>person</mat-icon> Usuario
+    </button>
+  </div>
+</mat-toolbar>
+
+<!-- Menú Principal -->
+<mat-menu #menuPrincipal="matMenu">
+  <!-- Submenú para Departamento -->
+  <button mat-menu-item [matMenuTriggerFor]="menuDepartamento" *ngIf="esSupervisorOAdministrador()"><mat-icon>location_city</mat-icon>Departamento</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuNotificacion" *ngIf="esSupervisorOAdministrador()"><mat-icon>notifications</mat-icon>Notificacion</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuTipoOcasion" *ngIf="esSupervisorOAdministrador()"><mat-icon>diversity_3</mat-icon>Tipo de Ocasión</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuTipoPago" *ngIf="esSupervisorOAdministrador()"><mat-icon>credit_card</mat-icon>Tipo de Pago</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuTipoPrenda" *ngIf="esSupervisorOAdministrador()">Tipo de <mat-icon>checkroom</mat-icon>Prenda</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuUsuario" *ngIf="esSupervisorOAdministrador()"><mat-icon>person</mat-icon>Usuario</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuRoles" *ngIf="esSupervisorOAdministrador()"><mat-icon>supervisor_account</mat-icon>Rol</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuTiendas" ><mat-icon>storefront</mat-icon>Tiendas</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuPrenda"><mat-icon>wc</mat-icon>Prenda</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuOutfit"><mat-icon>styler</mat-icon>Outfit</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuComentarioOutfit"><mat-icon>chat</mat-icon>Comentario Outfit</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuCatalogo"><mat-icon>import_contacts</mat-icon>Catalogo</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuPago"><mat-icon>payments</mat-icon>Pago</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuPedido"><mat-icon>shopping_cart</mat-icon>Pedido</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuDetpedido"><mat-icon>table_view</mat-icon>Detalles de Pedido</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuReportes" *ngIf="esSupervisorOAdministrador()"><mat-icon>equalizer</mat-icon>Reportes</button>
+</mat-menu>
+
+<!-- Menú desplegable para Tipo de Ocasión -->
+<mat-menu #menuDepartamento="matMenu">
+  <button mat-menu-item routerLink="/departamentos/ver">Listar</button>
+  <button mat-menu-item routerLink="/departamentos/nuevo" *ngIf="esAdministrador()">Registrar</button>
+  <button mat-menu-item routerLink="/departamentos" *ngIf="esAdministrador()">Opciones</button>
+</mat-menu>
+
+<!-- Menú desplegable para Notificación -->
+<mat-menu #menuNotificacion="matMenu">
+  <button mat-menu-item routerLink="/notificaciones/ver" *ngIf="esSupervisorOAdministrador()">Listar</button>
+  <button mat-menu-item routerLink="/notificaciones/nuevo" *ngIf="esSupervisorOAdministrador()">Registrar</button>
+  <button mat-menu-item routerLink="/notificaciones" *ngIf="esSupervisorOAdministrador()">Opciones</button>
+</mat-menu>
+
+<!-- Menú desplegable para Tipo de Ocasión -->
+<mat-menu #menuTipoOcasion="matMenu">
+  <button mat-menu-item routerLink="/tipos_ocasion/ver">Listar</button>
+  <button mat-menu-item routerLink="/tipos_ocasion/nuevo" *ngIf="esAdministrador()">Registrar</button>
+  <button mat-menu-item routerLink="/tipos_ocasion" *ngIf="esAdministrador()">Opciones</button>
+</mat-menu>
+
+<!-- Menú desplegable para Tipo de Pago -->
+<mat-menu #menuTipoPago="matMenu">
+  <button mat-menu-item routerLink="/tipopagos/ver">Listar</button>
+  <button mat-menu-item routerLink="/tipopagos/nuevo" *ngIf="esAdministrador()">Registrar</button>
+  <button mat-menu-item routerLink="/tipopagos" *ngIf="esAdministrador()">Opciones</button>
+</mat-menu>
+
+<!-- Menú desplegable para Tipo de Prenda -->
+<mat-menu #menuTipoPrenda="matMenu">
+  <button mat-menu-item routerLink="/tipos_prenda/ver">Listar</button>
+  <button mat-menu-item routerLink="/tipos_prenda/nuevo" *ngIf="esAdministrador()">Registrar</button>
+  <button mat-menu-item routerLink="/tipos_prenda" *ngIf="esAdministrador()">Opciones</button>
+</mat-menu>
+
+<!-- Menú desplegable para Usuarios -->
+<mat-menu #menuUsuario="matMenu">
+  <button mat-menu-item routerLink="/usuarios/ver" *ngIf="esSupervisorOAdministrador()">Listar</button>
+  <button mat-menu-item routerLink="/usuarios/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/usuarios" *ngIf="esAdministrador()">Opciones</button>
+</mat-menu>
+
+<!-- Menú desplegable para Roles -->
+<mat-menu #menuRoles="matMenu">
+  <button mat-menu-item routerLink="/roles/ver">Listar</button>
+  <button mat-menu-item routerLink="/roles/nuevo" *ngIf="esAdministrador()">Registrar</button>
+  <button mat-menu-item routerLink="/roles" *ngIf="esAdministrador()">Opciones</button>
+</mat-menu>
+
+<!-- Menú desplegable para Prendas -->
+<mat-menu #menuPrenda="matMenu">
+  <button mat-menu-item routerLink="/prendas/ver">Listar</button>
+  <button mat-menu-item routerLink="/prendas/nuevo" *ngIf="esVendedorOAdministrador()">Registrar</button>
+  <button mat-menu-item routerLink="/prendas" *ngIf="esVendedorOAdministrador()">Opciones</button>
+</mat-menu>
+
+<!-- Menú desplegable para Tiendas -->
+<mat-menu #menuTiendas="matMenu">
+  <button mat-menu-item routerLink="/tiendas/ver">Listar</button>
+  <button mat-menu-item routerLink="/tiendas/nuevo" *ngIf="esVendedorOAdministrador()">Registrar</button>
+  <button mat-menu-item routerLink="/tiendas" *ngIf="esVendedorOAdministrador()">Opciones</button>
+</mat-menu>
+
+<!-- Menú desplegable para Outfit -->
+<mat-menu #menuOutfit="matMenu">
+  <button mat-menu-item routerLink="/outfits/ver">Listar</button>
+  <button mat-menu-item routerLink="/outfits/nuevo" *ngIf="esClienteOAdministrador()">Registrar</button>
+  <button mat-menu-item routerLink="/outfits" *ngIf="esClienteOAdministrador()">Opciones</button>
+</mat-menu>
+
+<!-- Menú desplegable para ComentarioOutfit -->
+<mat-menu #menuComentarioOutfit="matMenu">
+  <button mat-menu-item routerLink="/comentarios_outfit/ver">Listar</button>
+  <button mat-menu-item routerLink="/comentarios_outfit/nuevo" *ngIf="esClienteOAdministrador()">Registrar</button>
+  <button mat-menu-item routerLink="/comentarios_outfit" *ngIf="esClienteOAdministrador()">Opciones</button>
+</mat-menu>
+
+<!-- Menú desplegable para Catalogo -->
+<mat-menu #menuCatalogo="matMenu">
+  <button mat-menu-item routerLink="/catalogos/ver">Listar</button>
+  <button mat-menu-item routerLink="/catalogos/nuevo" *ngIf="esClienteOAdministrador()">Registrar</button>
+  <button mat-menu-item routerLink="/catalogos" *ngIf="esClienteOAdministrador()">Opciones</button>
+</mat-menu>
+
+<!-- Menú desplegable para Pedidos -->
+<mat-menu #menuPedido="matMenu">
+  <button mat-menu-item routerLink="/pedidos/ver" *ngIf="esSupervisorOAdministrador()">Listar</button>
+  <button mat-menu-item routerLink="/pedidos/nuevo" *ngIf="esClienteOAdministrador()">Registrar</button>
+  <button mat-menu-item routerLink="/pedidos" *ngIf="esAdministrador()">Opciones</button>
+</mat-menu>
+
+<!-- Menú desplegable para Detalle Pedidos -->
+<mat-menu #menuDetpedido="matMenu">
+  <button mat-menu-item routerLink="/det_pedido/ver" *ngIf="esSupervisorOAdministrador()">Listar</button>
+  <button mat-menu-item routerLink="/det_pedido/nuevo" *ngIf="esClienteOAdministrador()">Registrar</button>
+  <button mat-menu-item routerLink="/det_pedido" *ngIf="esAdministrador()">Opciones</button>
+</mat-menu>
+
+<!-- Menú desplegable para Pagos -->
+<mat-menu #menuPago="matMenu">
+  <button mat-menu-item routerLink="/pagos/ver" *ngIf="esSupervisorOAdministrador()">Listar</button>
+  <button mat-menu-item routerLink="/pagos/nuevo" *ngIf="esClienteOAdministrador()">Registrar</button>
+  <button mat-menu-item routerLink="/pagos" *ngIf="esAdministrador()">Opciones</button>
+</mat-menu>
+
+<mat-menu #menuReportes="matMenu">
+  <button mat-menu-item routerLink="/reportes/cantidadpagossegunmetodopago"><mat-icon>pie_chart</mat-icon>
+  Pagos según Metodo de Pago</button> 
+  <button mat-menu-item routerLink="/reportes/cantidadpagossegunmetodopagopormes"><mat-icon>bar_chart</mat-icon>
+  Pagos según Metodo de Pago por Mes</button> 
+  <button mat-menu-item routerLink="/reportes/cantidadpedidossegundepartamento"><mat-icon>pie_chart</mat-icon>
+  Pedidos según Departamento</button> 
+  <button mat-menu-item routerLink="/reportes/cantidadpedidossegunmes"><mat-icon>bar_chart</mat-icon>
+  Pedidos según Mes</button> 
+  <button mat-menu-item routerLink="/reportes/montototalpagosegundepartamento"><mat-icon>pie_chart</mat-icon>
+  Monto Recaudado según Departamento</button> 
+  <button mat-menu-item routerLink="/reportes/montototalpagosegunsexo"><mat-icon>bar_chart</mat-icon>
+  Monto Recaudado según Sexo</button> 
+  <button mat-menu-item routerLink="/reportes/cantidadprendasxtienda"><mat-icon> pie_chart</mat-icon>
+  Cantidad de Prendas por Tienda</button>
+  <button mat-menu-item routerLink="/reportes/cantidadesusuarioxdepartamento"><mat-icon> bar_chart</mat-icon>
+  Cantidad de Usuarios por Departamento</button>
+  <button mat-menu-item routerLink="/reportes/cantidadoutfitxprenda"><mat-icon> pie_chart</mat-icon>
+  Cantidad de Outfit por Prenda</button>
+  <button mat-menu-item routerLink="/reportes/recuadadoxprenda"><mat-icon> bar_chart</mat-icon>
+  Total Recuado por Prenda</button>
+
+</mat-menu>
+<mat-menu #menuSalir="matMenu">
+  <button mat-menu-item routerLink="/login" (click)="cerrar()">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+  <button mat-menu-item>
+    Rol:
+    <span>{{ rol }}</span>
+  </button>
+</mat-menu>
+<router-outlet></router-outlet>
