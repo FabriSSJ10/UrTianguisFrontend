@@ -1,0 +1,84 @@
+.example-full-width {
+  width: 100%;
+}
+
+h1 {
+  color: #405A44; 
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
+mat-form-field {
+  width: 100%;
+  color: #241818; 
+}
+
+mat-label {
+  color: #000000; 
+}
+
+mat-form-field {
+  width: 400px;
+  max-width: 100%;
+}
+
+.container mat-form-field {
+  width: 800px;
+}
+
+input[matInput] {
+  width: 100%;
+  border-bottom: 2px solid #90B7A1;
+}
+
+input[matInput]:hover {
+  border-bottom: 2px solid #90B7A1;
+}
+
+
+mat-option {
+  color: #405A44; 
+}
+
+mat-hint {
+  color: #405A44;
+}
+
+button[mat-flat-button] {
+  background-color: #3C4640; 
+  color: white;
+  font-weight: bold;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 25px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+  transition: transform 0.3s ease, background-color 0.3s ease; 
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button[mat-flat-button]:hover {
+  background-color: #3C4640; 
+}
+
+button[mat-flat-button]:disabled {
+  background-color: #D9D9D9;
+  color: #F2EDDE;
+}
+
+br {
+  margin-bottom: 15px;
+}
+
+div {
+  margin-bottom: 15px;
+}
+
+.imagen-img {
+  width: 350px; 
+  height: auto; 
+  border-radius: 5px; 
+  object-fit: cover; 
+}

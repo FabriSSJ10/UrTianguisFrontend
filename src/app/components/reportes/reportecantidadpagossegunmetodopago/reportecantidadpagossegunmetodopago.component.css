@@ -1,0 +1,92 @@
+/* Contenedor principal centrado */
+.container {
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 700px;  /* Ajuste de ancho */
+  background-color: #f7f7f7;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;  /* Centrar contenido */
+}
+
+/* Título del reporte */
+h1 {
+  color: #405A44;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Contenedor del gráfico */
+.chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Estilo del gráfico */
+canvas {
+  max-height: 400px;
+  max-width: 600px;
+}
+
+/* Contenedor de la tabla */
+.table-container {
+  margin-top: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Estilos de la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #405A44;
+  color: #90B7A1;
+  font-weight: bold;
+}
+
+td {
+  background-color: white;
+  color: #333;
+  border-bottom: 1px solid #B3A284;
+}
+
+/* Hover de filas */
+tr:hover {
+  background-color: #0b0505;
+  cursor: pointer;
+}
+
+/* Ajustes adicionales para Angular Material */
+.mat-elevation-z8 {
+  border-radius: 10px;
+}
+
+.mat-header-cell, .mat-cell {
+  font-size: 1rem;
+  padding: 15px;
+}
+
+.mat-header-row, .mat-row {
+  border-bottom: 1px solid #3C4640;
+}
+
+.mat-header-row {
+  background-color: #3C4640;
+}
+
+.mat-cell:hover {
+  background-color: #F2EDDE;
+}

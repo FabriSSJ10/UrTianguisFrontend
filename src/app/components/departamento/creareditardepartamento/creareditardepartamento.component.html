@@ -1,0 +1,40 @@
+<div class="container" style="text-align: center; margin: 2%">
+  <div>
+    <h1>{{ edicion ? 'Modificar Departamento' : 'Registrar Departamento' }}</h1>
+  </div>
+  <div>
+    <form [formGroup]="form" (ngSubmit)="insertar()">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="hcodigo" readonly />
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Departamento</mat-label>
+        <input
+          matInput
+          placeholder="Ejemplo: Lima"
+          formControlName="hdepartamento"
+        />
+        <mat-error *ngIf="form.get('hdepartamento')?.hasError('required')">
+          El nombre del departamento es requerido
+        </mat-error>
+        <mat-error *ngIf="form.get('hdepartamento')?.hasError('maxlength')">
+          El nombre del departamento no puede exceder los 80 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <div>
+        <button
+          mat-flat-button
+          color="primary"
+          [disabled]="form.invalid"
+          class="custom-button"
+        >
+          {{ edicion ? 'Modificar' : 'Registrar' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

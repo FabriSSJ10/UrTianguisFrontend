@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Cantidad de pagos por tipo de pago</h1>
+
+  <!-- Gráfico -->
+  <div class="chart-container">
+    <canvas
+      baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barCharOptions"
+      [legend]="barChartLegend"
+      [type]="barCharType"
+    ></canvas>
+  </div>
+
+  <!-- Tabla de datos -->
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Tipo de Pago</th>
+          <th>Cantidad de Pagos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pago of datosPagos">
+          <td>{{ pago.tipo_pago }}</td>
+          <td>{{ pago.cantidad_pagos }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>Reporte de Cantidad de Pedidos por Mes</h1>
+  
+  <!-- Gráfico de Barras -->
+  <div style="height: 400px; width: 100%; max-width: 600px; margin: 0 auto;">
+    <canvas baseChart
+      [datasets]="barChartData"
+      [type]="barCharType"
+      [options]="barCharOptions"
+      [labels]="barChartLabels">
+    </canvas>
+  </div>
+
+  <!-- Tabla de Datos -->
+  <h2>Tabla de Pedidos por Mes y Año</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Mes</th>
+          <th>Año</th>
+          <th>Cantidad de Pedidos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dato of tablaDatos">
+          <td>{{ dato.mes }}</td>
+          <td>{{ dato.anio }}</td>
+          <td>{{ dato.cantidad_pedidos }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

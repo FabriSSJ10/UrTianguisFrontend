@@ -1,0 +1,85 @@
+<div class="container" style="text-align: center; margin: 2%">
+  <div><h1>{{ edicion ? 'Modificar Pago' : 'Registro de Pago' }}</h1></div>
+  <div>
+    <form [formGroup]="form" (submit)="insertar()">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="hid" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+          <mat-label>Monto</mat-label>
+          <input matInput formControlName="hmonto" />
+          <mat-error *ngIf="form.controls['hmonto'].hasError('required')">El monto es obligatorio.</mat-error>
+          <mat-error *ngIf="form.controls['hmonto'].hasError('min')">El monto no puede ser menor a 0.</mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+          <mat-label>Fecha de Pago</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="hfechapago" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Número de Tarjeta</mat-label>
+        <input matInput formControlName="hnumtarjeta" (input)="formatCardNumber($event)" maxlength="19" />
+        <mat-error *ngIf="form.get('hnumtarjeta')?.hasError('maxlength')">
+          El número de tarjeta no puede superar los 16 caracteres.
+        </mat-error>
+        <mat-error *ngIf="form.get('hnumtarjeta')?.hasError('minlength')">
+          El número de tarjeta debe ser de 16 caracteres.
+        </mat-error>
+      </mat-form-field>
+      
+      <br />
+      <mat-form-field>
+        <mat-label>Fecha de Vencimiento</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="hfechavencimiento" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker2"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+        <mat-error *ngIf="form.controls['hfechavencimiento'].hasError('required')">La fecha de vencimiento es obligatoria.</mat-error>
+        <mat-error *ngIf="form.controls['hfechavencimiento'].hasError('fechaFutura')">La fecha de vencimiento no puede ser pasada.</mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Código de Validación</mat-label>
+        <input matInput formControlName="hcodvalidacion" type="password" />
+        <mat-error *ngIf="form.get('hcodvalidacion')?.hasError('maxlength')">
+          El código de validación no puede superar los 10 caracteres.
+        </mat-error>
+      </mat-form-field>
+      
+      <br />
+      <mat-form-field class="example-full-width">
+          <mat-label>Celular</mat-label>
+          <input matInput formControlName="htelefono" />
+          <mat-error *ngIf="form.get('htelefono')?.hasError('maxlength')">
+            El número de celular no puede superar los 13 caracteres
+          </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Tipo de Pago</mat-label>
+        <mat-select formControlName="htipopago">
+          @for (pr of listaTipoPagos; track pr) {
+          <mat-option [value]="pr.id_tipopago">{{ pr.tipo_pago }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="form.controls['htipopago'].hasError('required')">El tipo de pago es obligatorio</mat-error>
+      </mat-form-field>
+      <br />
+      <div>
+        <button mat-flat-button class="custom-button">{{ edicion ? 'Modificar' : 'Registrar' }}</button>
+      </div>
+    </form>
+  </div>
+</div>

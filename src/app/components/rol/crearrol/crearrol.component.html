@@ -1,0 +1,38 @@
+<div class="container" style="text-align: center;margin:2%">
+  <div><h1>{{ edicion ? 'Modificar Rol' : 'Registro de Rol' }}</h1></div>
+  <div>
+    <form [formGroup]="form" (submit)="insertar()">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="hid" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width" >
+        <mat-label>Rol</mat-label>
+        <mat-select formControlName="hrol">
+          @for (es of listaRoles; track es) {
+          <mat-option [value]="es.value">{{ es.viewValue }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="form.get('hus')?.hasError('required')">
+          El Rol es obligatorio.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="hus" >
+          @for (m of listaUsuario; track m) {
+          <mat-option [value]="m.id_usuario">{{ m.nombre }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="form.get('hus')?.hasError('required')">
+          El Usuario es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <div>
+        <button mat-flat-button class="custom-button">{{ edicion ? 'Modificar' : 'Registrar' }}</button>
+      </div>
+    </form>
+  </div>
+</div>

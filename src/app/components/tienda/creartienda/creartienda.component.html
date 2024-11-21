@@ -1,0 +1,47 @@
+<div class="container" style="text-align: center; margin: 2%">
+  <div><h1>{{ edicion ? 'Modificar Tienda' : 'Registro de Tienda' }}</h1></div>
+  <div>
+    <form [formGroup]="form" (submit)="insertar()">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="hid" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="hnombre" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Altitud</mat-label>
+        <input matInput formControlName="haltitud" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Latitud</mat-label>
+        <input matInput formControlName="hlatitud" />
+      </mat-form-field>
+
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Enlace de Logo</mat-label>
+        <input matInput formControlName="hlogo" />
+      </mat-form-field>
+      <div *ngIf="form.get('hlogo')?.valid" class="image-preview">
+        <img [src]="form.get('hlogo')?.value" alt="Vista previa de la imagen" class="imagen-img" />
+      </div>
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="hus" >
+          @for (m of listaUsuarios; track m) {
+          <mat-option [value]="m.id_usuario">{{ m.username }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <div>
+        <button mat-flat-button class="custom-button">{{ edicion ? 'Modificar' : 'Registrar' }}</button>
+      </div>
+    </form>
+  </div>
+</div>

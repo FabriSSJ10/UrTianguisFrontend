@@ -1,0 +1,99 @@
+<div class="container" style="text-align: center; margin: 2%">
+  <div><h1>{{ edicion ? 'Modificar Outfit' : 'Registro de Outfit' }}</h1></div>
+  <div>
+    <form [formGroup]="form" (submit)="insertar()">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>Codigo</mat-label>
+        <input matInput formControlName="hid" />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="hus" (selectionChange)="actualizarNombreUsuario($event)">
+            <mat-option *ngFor="let m of listaUsuario" [value]="m.id_usuario">{{ m.nombre }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('hus')?.hasError('required')">
+            El usuario es obligatorio.
+          </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre.." formControlName="hnombre" />
+        <mat-error *ngIf="form.get('hnombre')?.hasError('required')">El nombre es obligatorio</mat-error>
+        <mat-error *ngIf="form.get('hnombre')?.hasError('maxlength')">
+          El nombre no puede tener más de 50 caracteres.
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Descripcion</mat-label>
+        <input matInput placeholder="Descripción.." formControlName="hdescripcion" />
+        <mat-error *ngIf="form.get('hdescripcion')?.hasError('required')">La decripción es obligatoria</mat-error>
+        <mat-error *ngIf="form.get('hdescripcion')?.hasError('maxlength')">
+          La decripción no puede tener más de 500 caracteres.
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Imagen</mat-label>
+        <input matInput formControlName="himagen" />
+        <mat-error *ngIf="form.get('himagen')?.hasError('required')">
+          La imagen es obligatoria.
+        </mat-error>
+      </mat-form-field>
+      <div *ngIf="form.get('himagen')?.valid" class="image-preview">
+        <img [src]="form.get('himagen')?.value" alt="Vista previa de la imagen" class="imagen-img" />
+      </div>
+      <br />
+      <mat-form-field>
+          <mat-label>Fecha Creacion</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="hi_fecha_creacion" readonly />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker1" ></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      <br />
+      <mat-form-field>
+          <mat-label>Fecha Modificacion</mat-label>
+          <input matInput [matDatepicker]="picker2" formControlName="hi_fecha_modificacion" readonly />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker2" ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+          <mat-label>Creado Por:</mat-label>
+          <input matInput formControlName="hi_creador_por" [value]="nombreUsuario" readonly />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+          <mat-label>Modificado Por:</mat-label>
+          <input matInput formControlName="hi_modificado_por" [value]="nombreUsuario" readonly />
+        </mat-form-field>
+    <br />
+      <mat-form-field>
+          <mat-label>Prenda</mat-label>
+          <mat-select formControlName="hpr" >
+            <mat-option *ngFor="let m of listaPrenda" [value]="m.id_prenda">{{ m.nombre }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('hpr')?.hasError('required')">
+            La prenda es obligatoria.
+          </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+          <mat-label>Tipo Ocasion</mat-label>
+          <mat-select formControlName="hto" >
+            <mat-option *ngFor="let m of listaTocacion" [value]="m.id_tipo_ocasion">{{ m.tipo_ocasion }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('hto')?.hasError('required')">
+            El tipo de ocasión es obligatorio.
+          </mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-flat-button class="custom-button">{{ edicion ? 'Modificar' : 'Registrar' }}</button>
+      </div>
+    </form>
+  </div>
+</div>

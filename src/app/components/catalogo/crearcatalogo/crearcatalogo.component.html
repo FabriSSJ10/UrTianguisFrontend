@@ -1,0 +1,47 @@
+<div class="container" style="text-align: center; margin: 2%">
+  <div><h1>{{ edicion ? 'Modificar Catálogo' : 'Registro de Catálogo' }}</h1></div>
+  <div>
+    <form [formGroup]="form" (submit)="insertar()">
+      <br />
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="hid" />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+          <mat-label>Fecha Creacion</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="hi_fecha_creacion" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker1" ></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+          <mat-label>Fecha Modificacion</mat-label>
+          <input matInput [matDatepicker]="picker2" formControlName="hi_fecha_modificacion" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker2" ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Outfit</mat-label>
+        <mat-select formControlName="hou" (selectionChange)="mostrarImagen($event.value)">
+          <mat-option *ngFor="let m of listaOutfit" [value]="m.id_outfit">
+            {{ m.nombre }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('hou')?.hasError('required')">
+          El outfit es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <div *ngIf="imagenOutfitSeleccionada" class="image-preview">
+        <img [src]="imagenOutfitSeleccionada" alt="Vista previa del outfit" class="imagen-img" />
+      </div>
+      
+      <div>
+        <button mat-flat-button class="custom-button">{{ edicion ? 'Modificar' : 'Registrar' }}</button>
+      </div>
+    </form>
+  </div>
+</div>

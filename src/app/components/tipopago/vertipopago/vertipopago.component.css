@@ -1,0 +1,117 @@
+/* Mejorando el estilo del título */
+.title {
+  font-size: 2.5rem; /* Tamaño grande para el título */
+  font-weight: bold; /* Negrita para mayor énfasis */
+  color: #405a44; /* Color verde oscuro que se alinea con el diseño */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra sutil para darle profundidad */
+  margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+/* Estilos para la lista de tarjetas */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Ancho mínimo ajustado a 250px */
+  gap: 20px; /* Mayor espacio entre tarjetas */
+  margin-top: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Estilos de cada tarjeta */
+.payment-type-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* Tarjetas con altura completa */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Efecto suave de transición */
+}
+
+.payment-type-card:hover {
+  transform: translateY(-5px); /* Desplazamiento al pasar el mouse */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Sombra al pasar el mouse */
+}
+
+/* Estilo de mat-card */
+mat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Espaciado entre el contenido de la tarjeta */
+  height: 100%;
+  width: 100%;
+  max-width: 280px; /* Ancho máximo de la tarjeta */
+  min-height: 100px; /* Altura mínima de la tarjeta */
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 8px; /* Bordes redondeados */
+  background-color: #f2edde; /* Fondo suave y claro */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  text-align: center;
+  transition: box-shadow 0.3s ease; /* Efecto de sombra al pasar el mouse */
+}
+
+/* Eliminamos el fondo y borde del header de la tarjeta */
+mat-card-header {
+  background-color: transparent; /* Eliminar fondo */
+  padding: 0; /* Eliminar padding */
+  margin-bottom: 10px; /* Espaciado inferior */
+  border: none; /* Eliminar borde */
+}
+
+/* Título dentro de la tarjeta */
+mat-card-title {
+  font-size: 1.2rem; /* Título más grande */
+  font-weight: bold; /* Negrita */
+  color: #405a44; /* Título en color verde oscuro */
+  margin-bottom: 10px;
+}
+
+/* Estilo del contenido */
+mat-card-content {
+  font-size: 1rem;
+  color: #3c4640; /* Texto más oscuro para mejorar la legibilidad */
+  margin-bottom: 15px;
+}
+
+/* Estilo de los botones de acción */
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Espacio entre los botones */
+  padding-top: 10px;
+}
+
+mat-card-actions mat-icon {
+  font-size: 1.3rem;
+  color: #90b7a1; /* Color de los iconos en un tono gris verdoso */
+  cursor: pointer;
+  transition: color 0.3s ease; /* Efecto de transición en el color de los iconos */
+}
+
+mat-card-actions mat-icon:hover {
+  color: #b3a284; /* Color más cálido en hover */
+}
+
+/* Ajuste del tamaño de los botones */
+mat-card-actions button {
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  background-color: #90b7a1; /* Fondo del botón con el mismo color de los iconos */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Efecto de transición al cambiar el fondo */
+}
+
+mat-card-actions button:hover {
+  background-color: #405a44; /* Fondo más oscuro al pasar el mouse */
+}
+.cards-container {
+  background-color: #bfbfbf; /* Color de fondo del cuadro */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 20px; /* Espaciado interno */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para el cuadro */
+  margin-top: 20px; /* Espacio superior */
+}

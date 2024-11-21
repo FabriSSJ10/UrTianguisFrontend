@@ -1,0 +1,89 @@
+<div class="container" style="text-align: center; margin: 2%">
+  <div><h1>{{ edicion ? 'Modificar Pedido' : 'Registro de Pedido' }}</h1></div>
+  <div>
+    <form [formGroup]="form" (submit)="insertar()">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>Codigo</mat-label>
+        <input matInput formControlName="hid" />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+          <mat-label>Estado</mat-label>
+          <mat-select formControlName="hestado_pedido">
+            @for (es of listaEstados; track es) {
+            <mat-option [value]="es.value">{{ es.viewValue }}</mat-option>
+            }
+          </mat-select>
+          <mat-error *ngIf="form.get('hestado_pedido')?.hasError('required')">El estado de pedido es obligatorio</mat-error>
+        </mat-form-field>
+      <br /> 
+      <mat-form-field>
+        <mat-label>Fecha de Solicitud</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="hfecha_solicitud" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Fecha de Entrega</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="hfecha_entrega" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+        <mat-error *ngIf="form.get('hfecha_entrega')?.hasError('required')">La fecha de entrega es obligatoria</mat-error>
+        <mat-error *ngIf="form.controls['hfecha_entrega'].hasError('fechaFutura')">La fecha de entrega no puede ser pasada.</mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+          <mat-label>Fecha de Creación</mat-label>
+          <input matInput [matDatepicker]="picker2" formControlName="hi_fecha_creacion" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+          <mat-label>Creado por</mat-label>
+          <input matInput formControlName="hi_creado_por" />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Pago</mat-label>
+        <mat-select formControlName="hpa">
+          @for (pr of listaPagos; track pr) {
+          <mat-option [value]="pr.id_pago">{{ pr.monto }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="form.get('hpa')?.hasError('required')">El pago es obligatorio</mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="hus">
+            @for (us of listaUsuarios; track us) {
+            <mat-option [value]="us.id_usuario">{{ us.nombre }}</mat-option>
+            }
+          </mat-select>
+          <mat-error *ngIf="form.get('hus')?.hasError('required')">El usuario es obligatorio</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Notificación</mat-label>
+          <mat-select formControlName="hno">
+            @for (no of listaNotificaciones; track no) {
+            <mat-option [value]="no.id_notificacion">{{ no.descripcion }}</mat-option>
+            }
+          </mat-select>
+          <mat-error *ngIf="form.get('hno')?.hasError('required')">La notificación es obligatoria</mat-error>
+        </mat-form-field>
+        <br />
+      <div>
+        <button mat-flat-button class="custom-button">{{ edicion ? 'Modificar' : 'Registrar' }}</button>
+      </div>
+    </form>
+  </div>
+</div>

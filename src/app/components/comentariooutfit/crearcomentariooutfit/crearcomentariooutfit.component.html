@@ -1,0 +1,58 @@
+<div class="container" style="text-align: center; margin: 2%">
+  <div><h1>{{ edicion ? 'Modificar Comentario de Outfit' : 'Registro de Comentario de Outfit' }}</h1></div>
+    <div>
+      <form [formGroup]="form" (submit)="insertar()">
+        <br />
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>Código</mat-label>
+          <input matInput formControlName="hid" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Calificación</mat-label>
+          <input matInput formControlName="hcalificacion" />
+          <mat-error *ngIf="form.get('hcalificacion')?.hasError('required')">La calificación es obligatorio</mat-error>
+          <mat-error *ngIf="form.get('hcalificacion')?.hasError('min')">La calificación debe ser entre 1-5</mat-error>
+          <mat-error *ngIf="form.get('hcalificacion')?.hasError('max')">La calificación debe ser entre 1-5</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Comentario</mat-label>
+          <input matInput formControlName="hcomentario" />
+          <mat-error *ngIf="form.get('hcomentario')?.hasError('required')">El comentario es obligatorio</mat-error>
+          <mat-error *ngIf="form.get('hcomentario')?.hasError('maxlength')">El comentario no debe superar los 500 caracteres</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="hus" >
+            @for (m of listaUsuarios; track m) {
+            <mat-option [value]="m.id_usuario">{{ m.username }}</mat-option>
+            }
+          </mat-select>
+          <mat-error *ngIf="form.get('hus')?.hasError('required')">El usuario es obligatorio</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Outfit</mat-label>
+          <mat-select formControlName="hou" (selectionChange)="mostrarImagen($event.value)">
+            <mat-option *ngFor="let m of listaoutfit" [value]="m.id_outfit">
+              {{ m.nombre }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('hou')?.hasError('required')">
+            El outfit es obligatorio
+          </mat-error>
+        </mat-form-field>
+        <div *ngIf="imagenOutfitSeleccionada" class="image-preview">
+          <img [src]="imagenOutfitSeleccionada" alt="Vista previa del outfit" class="imagen-img" />
+        </div>
+          
+          <br />
+        <div>
+          <button mat-flat-button class="custom-button">{{ edicion ? 'Modificar' : 'Registrar' }}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

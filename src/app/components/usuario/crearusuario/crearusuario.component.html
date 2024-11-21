@@ -1,0 +1,148 @@
+<div class="container" style="text-align: center; margin: 2%">
+  <div><h1>{{ edicion ? 'Modificar Perfil' : 'Registro de Usuario' }}</h1></div>
+  <div>
+    <form [formGroup]="form" (submit)="insertar()">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="hid" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Juan" formControlName="hnombre" />
+        <mat-error *ngIf="form.controls['hnombre'].hasError('required')">El nombre es obligatorio.</mat-error>
+        <mat-error *ngIf="form.controls['hnombre'].hasError('maxlength')">El nombre no puede exceder los 30 caracteres.</mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Apellido</mat-label>
+        <input matInput placeholder="Torres" formControlName="hapellido" />
+        <mat-error *ngIf="form.controls['hnombre'].hasError('required')">El apellido es obligatorio.</mat-error>
+        <mat-error *ngIf="form.controls['hnombre'].hasError('maxlength')">El apellido no puede exceder los 30 caracteres.</mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Correo</mat-label>
+        <input
+          matInput
+          placeholder="xxxx@gmail.com"
+          formControlName="hcorreo"
+        />
+        <mat-error *ngIf="form.controls['hcorreo'].hasError('required')">El correo es obligatorio.</mat-error>
+        <mat-error *ngIf="form.controls['hcorreo'].hasError('maxlength')">El correo no puede exceder los 320 caracteres.</mat-error>
+        <mat-error *ngIf="form.controls['hcorreo'].hasError('email')">El correo debe ser válido.</mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Sexo</mat-label>
+        <mat-select formControlName="hsexo">
+          @for (c of listaSexo; track c) {
+          <mat-option [value]="c.value">{{ c.viewValue }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="form.controls['hsexo'].hasError('required')">El campo "Sexo" es obligatorio.</mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>DNI</mat-label>
+        <input matInput placeholder="12345678" formControlName="hdni" />
+        <mat-error *ngIf="form.controls['hdni'].hasError('required')">El DNI es obligatorio.</mat-error>
+        <mat-error *ngIf="form.controls['hdni'].hasError('pattern')">El DNI debe tener exactamente 8 caracteres numéricos.</mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="hpassword" />
+        <mat-error *ngIf="form.controls['hpassword'].hasError('required')">La contraseña es obligatoria.</mat-error>
+        <mat-error *ngIf="form.controls['hpassword'].hasError('maxlength')">La contraseña no puede exceder los 500 caracteres.</mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker1"
+          formControlName="hfecha_Nacimiento"
+        />
+        <mat-error *ngIf="form.controls['hfecha_Nacimiento'].hasError('required')">La fecha de nacimiento es obligatoria.</mat-error>
+        <mat-error *ngIf="form.controls['hfecha_Nacimiento'].hasError('fechaFutura')">La fecha de nacimiento no puede ser futura.</mat-error>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker1"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Telefono</mat-label>
+        <input matInput placeholder="123456789" formControlName="htelefono" />
+        <mat-error *ngIf="form.controls['htelefono'].hasError('required')">El teléfono es obligatorio.</mat-error>
+        <mat-error *ngIf="form.controls['htelefono'].hasError('minlength')">El teléfono debe tener 9 caracteres.</mat-error>
+        <mat-error *ngIf="form.controls['htelefono'].hasError('maxlength')">El teléfono debe tener 9 caracteres.</mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="husername" />
+        <mat-error *ngIf="form.controls['husername'].hasError('required')">El username es obligatorio.</mat-error>
+        <mat-error *ngIf="form.controls['husername'].hasError('maxlength')">El username no puede exceder los 30 caracteres.</mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>¿Enabled?</mat-label>
+        <mat-select formControlName="henabled">
+          @for (c of listaEnable; track c) {
+          <mat-option [value]="c.value">{{ c.viewValue }}</mat-option>
+          <mat-error *ngIf="form.controls['henabled'].hasError('required')">El campo "Enabled" es obligatorio.</mat-error>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Fecha Creacion</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="hi_fecha_creacion" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker2"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Fecha modificacion</mat-label>
+        <input matInput [matDatepicker]="picker3" formControlName="hi_fecha_modificacion" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker3"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Creado Por:</mat-label>
+        <input matInput formControlName="hi_creado_por" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>Modificado Por:</mat-label>
+        <input matInput formControlName="hi_modificado_por" />
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Departamento</mat-label>
+        <mat-select formControlName="hdp" >
+          @for (m of listaDepartamentos; track m) {
+          <mat-option [value]="m.id_departamento">{{ m.departamento }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <div>
+        <button mat-flat-button class="custom-button">{{ edicion ? 'Modificar' : 'Registrar' }}</button>
+      </div>
+    </form>
+  </div>
+</div>

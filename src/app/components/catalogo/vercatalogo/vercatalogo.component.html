@@ -1,0 +1,54 @@
+<div class="container" style="margin: 10%">
+  <div style="text-align: center;">
+    <h1 class="title">Lista de Catálogos</h1>
+  </div>
+
+  <div class="cards-container">
+    <div *ngFor="let element of paginatedData" class="department-card">
+      <mat-card class="mat-elevation-z4">
+        <mat-card-header>
+          <mat-card-subtitle>Código: {{ element.id_catalogo }}</mat-card-subtitle>
+          <mat-card-title>{{ element.ou.nombre }}</mat-card-title>
+        </mat-card-header>
+
+        <!-- Mostrar más detalles si el mat-card está expandido -->
+        <mat-card-content *ngIf="expandedCard !== element.id_catalogo">
+          <p><strong>Fecha Creación:</strong> {{ element.i_fecha_creacion }}</p>
+          <p><strong>Fecha Modificación:</strong> {{ element.i_fecha_modificacion }}</p>
+        </mat-card-content>
+
+        <!-- Opciones de acción para el listado inicial -->
+        <mat-card-actions *ngIf="expandedCard !== element.id_catalogo">
+        
+          <button mat-button (click)="verMas(element.id_catalogo)">
+            <mat-icon style="color: #405a44">visibility</mat-icon> Ver más
+          </button>
+        </mat-card-actions>
+
+        <!-- Detalles completos del catálogo si está expandido -->
+        <mat-card-content *ngIf="expandedCard === element.id_catalogo">
+          <p><strong>Código:</strong> {{ element.id_catalogo }}</p>
+          <p><strong>Nombre:</strong> {{ element.ou.nombre }}</p>
+          <p><strong>Imagen:</strong></p>
+          <img *ngIf="element.ou.imagen" [src]="element.ou.imagen" alt="Imagen de Outfit" class="imagen-img">
+          <p><strong>Fecha Creación:</strong> {{ element.i_fecha_creacion }}</p>
+          <p><strong>Fecha Modificación:</strong> {{ element.i_fecha_modificacion }}</p>
+        </mat-card-content>
+
+        <!-- Botón para regresar al listado normal -->
+        <mat-card-actions *ngIf="expandedCard === element.id_catalogo">
+          <button mat-button (click)="regresar()">
+            <mat-icon style="color: #405a44">arrow_back</mat-icon> Regresar
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <mat-paginator [length]="dataSource.length" 
+                 [pageSize]="4" 
+                 [pageSizeOptions]="[4, 10, 20]" 
+                 showFirstLastButtons
+                 (page)="onPageChange($event)">
+  </mat-paginator>
+</div>

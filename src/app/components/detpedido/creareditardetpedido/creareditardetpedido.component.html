@@ -1,0 +1,58 @@
+<div class="container" style="text-align: center; margin: 2%">
+  <div><h1>{{ edicion ? 'Modificar Detalles de Pedido' : 'Registro de Detalles de Pedido' }}</h1></div>
+  <div>
+    <form [formGroup]="form" (submit)="insertar()">
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="hid" />
+      </mat-form-field>
+      <br />
+      
+      <mat-form-field>
+        <mat-label>Prenda</mat-label>
+        <mat-select formControlName="hpr" (selectionChange)="onPrendaSeleccionada($event)">
+          <mat-option *ngFor="let pr of listaPrendas" [value]="pr.id_prenda">{{ pr.nombre }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('hpr')?.hasError('required')">La prenda es obligatoria</mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Cantidad</mat-label>
+        <input matInput type="number" formControlName="hcantidad" (input)="calcularSubTotal()" />
+        <mat-error *ngIf="form.get('hcantidad')?.hasError('required')">La cantidad es obligatoria</mat-error>
+        <mat-error *ngIf="form.get('hcantidad')?.hasError('min')">La cantidad no puede ser menor que 1</mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Precio Total</mat-label>
+        <input matInput formControlName="hprecio_total" readonly />
+        <mat-error *ngIf="form.get('hprecio_total')?.hasError('required')">El precio total es obligatorio</mat-error>
+        <mat-error *ngIf="form.get('hprecio_total')?.hasError('min')">El precio total no puede ser menor que 0</mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Sub Total</mat-label>
+        <input matInput formControlName="hsub_total" readonly />
+        <mat-error *ngIf="form.get('hsub_total')?.hasError('required')">El sub total es obligatorio</mat-error>
+        <mat-error *ngIf="form.get('hsub_total')?.hasError('min')">El sub total no puede ser menor que 0</mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field>
+        <mat-label>Pedido</mat-label>
+        <mat-select formControlName="hpe">
+          <mat-option *ngFor="let pe of listaPedidos" [value]="pe.id_pedido">{{ pe.id_pedido }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('hpe')?.hasError('required')">El pedido es obligatorio</mat-error>
+      </mat-form-field>
+      <br />
+
+      <div>
+        <button mat-flat-button class="custom-button">{{ edicion ? 'Modificar' : 'Registrar' }}</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="container" style="margin: 2%">
+  <div style="text-align: center;">
+    <h1 class="title">Lista de Tiendas</h1>
+  </div>
+
+  <div class="department-list">
+    <div *ngFor="let element of dataSource.data" class="department-card">
+      <mat-card class="mat-elevation-z4">
+        <mat-card-header>
+          <mat-card-title>{{ element.nombre }}</mat-card-title>
+          <mat-card-subtitle>Código: {{ element.id_tienda }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <!-- Mostrar detalles resumidos si la tarjeta no está expandida -->
+        <mat-card-content *ngIf="expandedCard !== element.id_tienda">
+          <p><strong>Altitud:</strong> {{ element.altitud }}</p>
+          <p><strong>Latitud:</strong> {{ element.latitud }}</p>
+          <p><strong>Usuario:</strong> {{ element.us.nombre }}</p>
+        </mat-card-content>
+
+        <!-- Opciones resumidas -->
+        <mat-card-actions *ngIf="expandedCard !== element.id_tienda">
+          <button mat-button (click)="verMas(element.id_tienda)">
+            <mat-icon style="color: #405a44">visibility</mat-icon> Ver más
+          </button>
+        </mat-card-actions>
+
+        <!-- Mostrar detalles completos si la tarjeta está expandida -->
+        <mat-card-content *ngIf="expandedCard === element.id_tienda">
+          <p><strong>Altitud:</strong> {{ element.altitud }}</p>
+          <p><strong>Latitud:</strong> {{ element.latitud }}</p>
+          <p><strong>Logo:</strong></p>
+          <img *ngIf="element.logo" [src]="element.logo" alt="Logo de Tienda" class="imagen-img">
+          <p><strong>Usuario:</strong> {{ element.us.nombre }}</p>
+        </mat-card-content>
+
+        <!-- Botón para regresar al estado resumido -->
+        <mat-card-actions *ngIf="expandedCard === element.id_tienda">
+          <button mat-button (click)="regresar()">
+            <mat-icon style="color: #405a44">arrow_back</mat-icon> Regresar
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <mat-paginator [length]="dataSource.data.length"
+                 [pageSize]="5"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 (page)="onPageChange($event)">
+  </mat-paginator>
+</div>

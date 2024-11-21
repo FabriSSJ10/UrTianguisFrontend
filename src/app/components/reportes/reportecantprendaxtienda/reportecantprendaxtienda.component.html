@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>Reporte de Cantidad de Prendas por Tienda</h1>
+  <div style="height: 400px; width: 100%; max-width: 600px; margin: 0 auto;">
+    <canvas baseChart
+      [datasets]="barChartData"
+      [type]="barCharType"
+      [options]="barCharOptions"
+      [labels]="barChartLabels">
+    </canvas>
+  </div>
+  <!-- Tabla con los datos -->
+  <table class="table table-bordered mt-4">
+    <thead>
+      <tr>
+        <th>Tienda</th>
+        <th>Cantidad de Prendas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of tablaDatos">
+        <td>{{ item.tienda }}</td>
+        <td>{{ item.cantidad_prendas }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
